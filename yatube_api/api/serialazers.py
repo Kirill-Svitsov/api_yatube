@@ -6,7 +6,7 @@ class GroupSerializer(serializers.ModelSerializer):
     posts = serializers.StringRelatedField(many=True, read_only=True)
 
     class Meta:
-        fields = ('id', 'title', 'slug', 'description', 'posts')
+        fields = '__all__'
         model = Group
 
 
@@ -14,7 +14,7 @@ class PostSerializer(serializers.ModelSerializer):
     author = serializers.StringRelatedField(read_only=True)
 
     class Meta:
-        fields = ('id', 'text', 'author', 'image', 'group', 'pub_date')
+        fields = '__all__'
         model = Post
         read_only_fields = ('author',)
 
@@ -25,6 +25,6 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only=True)
 
     class Meta:
-        fields = ('id', 'author', 'post', 'text', 'created')
+        fields = '__all__'
         model = Comment
         read_only_fields = ('post',)
